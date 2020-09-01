@@ -75,7 +75,7 @@ public class Nodo {
     }
     
     /**
-     * Calcula la altura de un nodo
+     * Calcula la altura de un nodo     * 
      * @return int la altura de mi hijo más alto + 1
      */
     public int obtenerAlturaNodo()
@@ -97,15 +97,18 @@ public class Nodo {
             }
             // Obtuve las alturas de mis hijos
             // Operación ternaria
-//            if(altizq > altder)
-//            {
-//                return altizq +1;
-//            }
-//            else
-//            {
-//                return altder+1;
-//            }                        
-            return altizq > altder? altizq+1 : altder+1;
+            /*
+            if(altizq > altder)
+            {
+                return altizq +1;
+            }
+            else
+            {
+                return altder+1;
+            } 
+            */           
+            
+            return altizq > altder ? altizq+1 : altder+1;
             
         }
     }

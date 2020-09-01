@@ -55,6 +55,38 @@ public class ArbolBinario {
             }
         }
     }
+    
+     /**
+     * Método que retorna un arreglo de enteros con los datos de recorrer el
+     * árbol en postorden
+     *
+     * @return ArrayList
+     * @throws ArbolBinarioException
+     */
+    public ArrayList postOrden() throws ArbolBinarioException {
+        //isLleno();
+        ArrayList l = new ArrayList();
+        if (raiz != null) {
+            postOrden(raiz, l);
+        }        
+        return l;
+    }
+    /**
+     * Método recursivo que recorre todo el árbol en preorden
+     * @param temp Ayudante que toma referencia en un nodo
+     * @param listado Acumulador para registrar el dato del nodo visitado
+     */
+    private void postOrden(Nodo temp, ArrayList listado)
+    {
+        //Condición que garantiza que el método finalice
+        if(temp!=null)
+        {           
+            postOrden(temp.getIzquierda(), listado);
+            postOrden(temp.getDerecha(), listado);
+            listado.add(temp.getDato());
+        }
+    }
+    
 
     /**
      * Método que retorna un arreglo de enteros con los datos de recorrer el
@@ -109,5 +141,27 @@ public class ArbolBinario {
         }
 
     }
+    
+    
+    /**
+     * Método que retorna la cantidad de nodos del arbol
+     * @return int cantidad de nodos
+     */
+    public int contarNodos()
+    {
+        int cont=0;
+        if(this.raiz!=null)
+        {
+          cont=this.contarNodos(raiz, cont);
+        }
+        return cont;
+    }
+    
+    private int contarNodos(Nodo reco, int cont)
+    {
+        //Hacen el dllo del contar
+        return 67;
+    }
+    
 
 }
