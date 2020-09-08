@@ -120,7 +120,7 @@ public class ArbolBinario {
     }
 
     public ArrayList inOrden() throws ArbolBinarioException {
-        isLleno();
+        //isLleno();
         ArrayList l = new ArrayList();
         inOrden(raiz, l);
         return l;
@@ -146,22 +146,93 @@ public class ArbolBinario {
     /**
      * Método que retorna la cantidad de nodos del arbol
      * @return int cantidad de nodos
-     */
-    public int contarNodos()
+     */                             // raiz
+    public int contarNodos()        //reco
     {
-        int cont=0;
-        if(this.raiz!=null)
-        {
-          cont=this.contarNodos(raiz, cont);
-        }
-        return cont;
-    }
+        return this.contarNodos(raiz);        
+    }    
     
-    private int contarNodos(Nodo reco, int cont)
+    public int contarNodos(Nodo reco)
     {
         //Hacen el dllo del contar
-        return 67;
+        if(reco==null)
+        {
+            return 0;
+        }
+        if(reco.isHoja())
+        {
+            return 1;
+        }
+        else
+        {   
+            return 1 + contarNodos(reco.getIzquierda())+ contarNodos(reco.getDerecha());
+        }
     }
+    
+    /**
+     * Método que retorna la suma de los valos de un arbol a partir del nodo dado
+     * @param ref Nodo que se toma como raiz para sumar todos sus descendientes
+     * @return int Valor sumar todos los nodos a partir de la referencia
+     */    
+        
+    public int sumarNodos(Nodo ref)
+    {
+        if(ref != null)
+        {
+            return ref.getDato() + sumarNodos(ref.getIzquierda()) 
+                    + sumarNodos(ref.getDerecha());
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    
+    
+    /**
+     * Método que retorna la suma total del arbol     
+     * @return int Valor suma total del árbol
+     */    
+        
+    public int sumarArbol()
+    {
+       return sumarNodos(raiz);
+    }
+    
+    /**
+     * Método que buscar un nodo a partir de una referencia
+     * @param datobuscar entero que recibe el número a buscar
+     * @param ref Nodo a partir del cual busco el dato
+     * @return Retrona todo el arbol a partir del Nodo ubicado
+     * 
+     */
+    public Nodo buscarNodo(int datobuscar, Nodo ref)
+    {
+        if(ref !=null)
+        {
+            if(ref.getDato()==datobuscar)
+            {
+                return ref;
+            }
+            else
+            {
+                if(datobuscar < ref.getDato())
+                {
+                    return buscarNodo(datobuscar, ref.getIzquierda());
+                }
+                else
+                {
+                    return buscarNodo(datobuscar, ref.getDerecha());
+                }
+            }
+        }
+        else
+        {
+            //Ojoo
+            return null;
+        }
+    }
+    
     
 
 }
