@@ -11,7 +11,7 @@ import arbolbinario.modelo.excepciones.ArbolBinarioException;
  *
  * @author carloaiza
  */
-public class Nodo {
+public class Nodo {    
     
     private int dato;
     private Nodo izquierda;
