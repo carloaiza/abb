@@ -23,34 +23,30 @@ public class ArbolBinario implements Serializable{
         this.raiz = raiz;
     }
 
-    public void isLleno() throws ArbolBinarioException {
-        if (raiz == null) {
-            throw new ArbolBinarioException("El árbol está vacío");
-        }
-    }
-
-    public void adicionarNodo(Dato dato, Nodo ubicacion) throws ArbolBinarioException {
+     public void adicionarNodo(Dato dato, Nodo ubicacion) throws ArbolBinarioException {
         if (raiz == null) {
             raiz = new Nodo(dato);
+
         } else {
             if (dato.getNumero() < ubicacion.getDato().getNumero()) {
                 if (ubicacion.getIzquierda() == null) {
-                    ubicacion.setIzquierda(new Nodo(dato));                    
+                    ubicacion.setIzquierda(new Nodo(dato));
                 } else {
                     adicionarNodo(dato, ubicacion.getIzquierda());
                 }
-                
             } else if (dato.getNumero() > ubicacion.getDato().getNumero()) {
                 if (ubicacion.getDerecha() == null) {
                     ubicacion.setDerecha(new Nodo(dato));
                 } else {
                     adicionarNodo(dato, ubicacion.getDerecha());
-                }                
+                }
             } else {
                 throw new ArbolBinarioException("No se puede repetir");
             }
             ubicacion.calcularSuma();
         }
     }
+
+    
     
 }
